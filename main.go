@@ -244,15 +244,18 @@ func getVirusTotalURLs(domain string, noSubs bool) ([]wurl, error) {
 }
 
 func isSubdomain(rawUrl, domain string) bool {
-	u, err := url.Parse(rawUrl)
-	if err != nil {
-		// we can't parse the URL so just
-		// err on the side of including it in output
-		return false
-	}
-
-	return strings.ToLower(u.Hostname()) != strings.ToLower(domain)
+    u, err := url.Parse(rawUrl)
+    if err != nil {
+        return false
+    }
+    hostname := strings.ToLower(u.Hostname())
+    targetDomain := strings.ToLower(domain)
+    if hostname == targetDomain || strings.HasSuffix(hostname, "."+targetDomain) {
+        return false
+    }
+    return true
 }
+
 
 func getVersions(u string) ([]string, error) {
 	out := make([]string, 0)
