@@ -14,6 +14,10 @@ Install:
 ▶ go install github.com/tomnomnom/waybackurls@latest
 ```
 
+```
+Use 'echo $GOPATH' for finding binaries location.
+```
+
 ## Credit
 
 This tool was inspired by @mhmdiaa's [waybackurls.py](https://gist.github.com/mhmdiaa/adf6bff70142e5091792841d4b372050) script.
